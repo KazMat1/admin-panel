@@ -3,6 +3,7 @@ import { Bars3Icon, SunIcon, MoonIcon } from "@heroicons/vue/24/outline";
 import { onMounted, onUnmounted, ref } from "vue";
 import { debounce } from "lodash";
 import DropdownMenu from "../components/DropdownMenu.vue";
+import Sidebar from "../components/Sidebar.vue";
 
 const innerWidth = ref(window.innerWidth);
 const show = ref(innerWidth.value >= 1280 ? true : false);
@@ -56,7 +57,7 @@ onUnmounted(() => {
       class="fixed top-0 w-64 h-screen bg-white dark:bg-gray-800 z-20 transform duration-300 dark:text-gray-300"
       :class="{ '-translate-x-full': !show }"
     >
-      サイドバー
+      <Sidebar />
     </div>
     <div
       class="fixed xl:hidden inset-0 bg-gray-900 z-10 opacity-50"
