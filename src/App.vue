@@ -1,5 +1,7 @@
-<script setup></script>
+<script setup>
+import Default from './layouts/Default.vue'
+</script>
 
 <template>
-  <div class="text-red-500 font-semibold">ダッシュボード</div>
+  <Default>ダッシュボード</Default>
 </template>
