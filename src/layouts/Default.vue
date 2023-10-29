@@ -2,6 +2,7 @@
 import { Bars3Icon, SunIcon, MoonIcon } from "@heroicons/vue/24/outline";
 import { onMounted, onUnmounted, ref } from "vue";
 import { debounce } from "lodash";
+import DropdownMenu from "../components/DropdownMenu.vue";
 
 const innerWidth = ref(window.innerWidth);
 const show = ref(innerWidth.value >= 1280 ? true : false);
@@ -12,24 +13,24 @@ const toggleShow = () => {
 const theme = ref("light");
 
 // check the theme a user select and add class for theme to html element
-if (localStorage.theme === 'dark') {
-  document.documentElement.classList.add('dark');
-  theme.value = 'dark';
+if (localStorage.theme === "dark") {
+  document.documentElement.classList.add("dark");
+  theme.value = "dark";
 } else {
-  document.documentElement.classList.remove('dark');
-  theme.value = 'light';
+  document.documentElement.classList.remove("dark");
+  theme.value = "light";
 }
 
 // change theme color method
 const changeMode = (mode) => {
-  theme.value = mode
+  theme.value = mode;
   // add class to html element
-  theme.value === 'light'
-    ? document.documentElement.classList.remove('dark')
-    : document.documentElement.classList.add('dark');
+  theme.value === "light"
+    ? document.documentElement.classList.remove("dark")
+    : document.documentElement.classList.add("dark");
   // set a parameter in local storage
-    localStorage.theme = mode;
-}
+  localStorage.theme = mode;
+};
 
 // check window size method
 const checkWindowSize = () => {
@@ -73,7 +74,7 @@ onUnmounted(() => {
           class="h-6 w-6 text-gray-600 dark:text-gray-300 cursor-pointer"
           @click="toggleShow"
         />
-        <div>
+        <div class="flex items-center space-x-4">
           <MoonIcon
             class="w-7 h-7 text-gray-600 cursor-pointer"
             @click="changeMode('dark')"
@@ -84,6 +85,7 @@ onUnmounted(() => {
             @click="changeMode('light')"
             v-else
           />
+          <DropdownMenu />
         </div>
       </div>
       <div class="dark:text-gray-300">
